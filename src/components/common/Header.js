@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
        
     },
     button: {
-
+        color: "white"
     }
   
 }));
