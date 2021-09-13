@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
-        minWidth: theme.typography.pxToRem(1320),
+        minWidth: theme.typography.pxToRem(1200),
         maxHeight: theme.typography.pxToRem(72),
         border: `${theme.typography.pxToRem(1)} solid #e9e9e9`,
         backgroundColor: "#ffffff",
@@ -22,21 +22,45 @@ const useStyles = makeStyles((theme) => ({
         left: 0,
         zIndex: 999,
 
-       
+        "& div": {
+            display: "flex",
+            alignItems: "center",
+        },
+
+        "& img": {
+            marginRight: theme.typography.pxToRem(16),
+        },
+
+        "& a": {
+            fontSize: theme.typography.pxToRem(16),
+            lineHeight: theme.typography.pxToRem(24),
+            color: "#595959",
+            textDecoration: "none",
+            marginRight: theme.typography.pxToRem(20),
+        }
+
     },
     button: {
-        color: "white"
+        color: "white",
+        padding: `${theme.typography.pxToRem(9)} ${theme.typography.pxToRem(20)}`,
+        borderRadius: theme.typography.pxToRem(5),
+        boxShadow: `0 ${theme.typography.pxToRem(2)} ${theme.typography.pxToRem(4)} 0 rgb(1, 176, 215, 0.1)`,
     }
-  
+
 }));
 const Header = () => {
     const classes = useStyles();
     return (
         <AppBar className={classes.header}>
-            <img src={DidicastLogo} alt="디디캐스트 로고"/>
             <div>
-                <Button className={classes.button}>제안서 다운로드</Button>
-                <Button>로그인</Button>
+                <img src={DidicastLogo} alt="디디캐스트 로고" />
+                <a href="/">서비스 소개</a>
+                <a href="https://enterprise.didicast.com/pricing" target="_blank" rel="noreferrer">요금 안내</a>
+                <a href="https://enterprise.didicast.com/faq" target="_blank" rel="noreferrer">FAQ</a>
+            </div>
+            <div>
+                <Button className={classes.button} style={{ backgroundColor: "#3f5c74", marginRight: "16px" }}>제안서 다운로드</Button>
+                <Button className={classes.button} style={{ backgroundColor: "#06b0d7" }}>로그인</Button>
             </div>
         </AppBar>
     );
