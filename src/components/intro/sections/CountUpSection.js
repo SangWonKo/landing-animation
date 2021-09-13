@@ -1,15 +1,19 @@
 import { Container, Grid, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
+import useCountUp from '../../../hooks/useCountUp';
+import useFadeIn from '../../../hooks/useFadeIn';
 
 const useStyles = makeStyles((theme) => ({
   container: {
     // display: "flex",
     // flexDirection: "row",
     width: "100%",
+    maxWidth: "100%",
     padding: theme.typography.pxToRem(40),
     margin: 0,
     alignItems: "center",
     textAlign: "center",
+    whiteSpace: "nowrap",
 
     "& h2": {
       marginBottom: theme.typography.pxToRem(32),
@@ -25,9 +29,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     "& h3": {
+      display: "flex",
       fontSize: theme.typography.pxToRem(64),
       color: "#06b0d7",
       fontWeight: "bold",
+      margin: 0,
     },
     "& div": {
       fontSize: theme.typography.pxToRem(24),
@@ -39,40 +45,17 @@ const useStyles = makeStyles((theme) => ({
       color: "#0b3351",
       fontWeight: "bold",
     },
-
   }
-  // item: {
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   "& h3": {
-  //     fontSize: theme.typography.pxToRem(48),
-  //     fontWeight: "bold",
-  //     color: "#333",
-  //     lineHeight: 1.25
-  //   },
-  //   "& h6": {
-  //     fontSize: theme.typography.pxToRem(24),
-  //     color: "#595959",
-  //     lineHeight: theme.typography.pxToRem(32),
-  //     marginTop: theme.typography.pxToRem(36),
-  //   },
-  //   "& span": {
-  //     color: "#06b0d7",
-  //     fontWeight: "bold",
-  //   },
-  //   "& img": {
-  //     width: theme.typography.pxToRem(500),
-  //   }
-  // }
 }));
 
 const CountUpSection = () => {
   const classes = useStyles();
+  const scrollAnimation = useFadeIn();
   return (
-    <Container className={classes.container}>
+    <Container className={classes.container} {...scrollAnimation}>
       <h2>👏🏼 디디캐스트 도입 후 이렇게 달라졌어요</h2>
       <Container className={classes.grid}>
-        <Grid container spacing={5}>
+        <Grid container spacing={8}>
           {cntItems.map((item) => (
             <CountUpItem item={item} />
           ))}
@@ -95,9 +78,13 @@ const cntItems = [
 const CountUpItem = ({ item }) => {
   const { ratio, text } = item;
   const classes = useStyles();
+  const countupAnimation = useCountUp(ratio, 0, ratio*20);
   return (
     <Grid item xs={6} className={classes.item}>
-      <Typography variant="h3">{ratio}%</Typography>
+      <Typography variant="h3">
+        <h3 {...countupAnimation} />
+        <h3>%</h3>
+      </Typography>
       <div dangerouslySetInnerHTML={{ __html: text }} />
     </Grid>
   );

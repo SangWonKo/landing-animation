@@ -24,6 +24,8 @@ const IntroPage = () => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
+             <div className={classes.dummy} />
+             <div className={classes.dummy} />
             <FadeInSection />
             <div className={classes.dummy}>
                 <h1>dummy section</h1>

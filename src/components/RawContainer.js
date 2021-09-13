@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         flex: "1 0 auto",
         // minWidth: theme.typography.pxToRem(1200),
-        maxWidth: theme.typography.pxToRem(1200),
+        maxWidth: "100%",
         padding: 0,
         position: "relative"
     }
