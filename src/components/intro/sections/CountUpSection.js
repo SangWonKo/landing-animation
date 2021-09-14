@@ -1,5 +1,4 @@
-import { Container, Grid, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
+import { Container, Grid, makeStyles } from '@material-ui/core';
 import useCountUp from '../../../hooks/useCountUp';
 import useFadeIn from '../../../hooks/useFadeIn';
 
@@ -15,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     whiteSpace: "nowrap",
 
-    "& h2": {
+    "& h1": {
       marginBottom: theme.typography.pxToRem(32),
     }
 
@@ -28,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+   
     "& h3": {
       display: "flex",
       fontSize: theme.typography.pxToRem(64),
@@ -35,29 +35,35 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: "bold",
       margin: 0,
     },
-    "& div": {
-      fontSize: theme.typography.pxToRem(24),
-      color: "#333",
-      textAlign: "left",
-      marginLeft: theme.typography.pxToRem(18)
-    },
     "& span": {
       color: "#0b3351",
-      fontWeight: "bold",
+      fontWeight: "bold",  
     },
+  },
+  ratio: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "end"
+  },
+  text: {
+    fontSize: theme.typography.pxToRem(24),
+    color: "#333",
+    textAlign: "left",
+    marginLeft: theme.typography.pxToRem(18)
   }
 }));
 
 const CountUpSection = () => {
   const classes = useStyles();
-  const scrollAnimation = useFadeIn();
+  const {ref, style} = useFadeIn();
+
   return (
-    <Container className={classes.container} {...scrollAnimation}>
-      <h2>👏🏼 디디캐스트 도입 후 이렇게 달라졌어요</h2>
+    <Container className={classes.container} ref={ref} style={style}>
+      <h1>👏🏼 디디캐스트 도입 후 이렇게 달라졌어요</h1>
       <Container className={classes.grid}>
         <Grid container spacing={8}>
-          {cntItems.map((item) => (
-            <CountUpItem item={item} />
+          {cntItems.map((item, index) => (
+            <CountUpItem item={item} key={index}/>
           ))}
         </Grid>
       </Container>
@@ -81,11 +87,11 @@ const CountUpItem = ({ item }) => {
   const countupAnimation = useCountUp(ratio, 0, ratio*20);
   return (
     <Grid item xs={6} className={classes.item}>
-      <Typography variant="h3">
-        <h3 {...countupAnimation} />
+      <Grid item xs={5} className={classes.ratio}>
+        <h3 {...countupAnimation}>0</h3>
         <h3>%</h3>
-      </Typography>
-      <div dangerouslySetInnerHTML={{ __html: text }} />
+      </Grid>
+      <Grid  item xs={7} dangerouslySetInnerHTML={{ __html: text }} className={classes.text}/>
     </Grid>
   );
 }

@@ -1,5 +1,6 @@
 import { AppBar, Button, makeStyles } from '@material-ui/core';
 import React from 'react';
+import useFadeIn from '../../hooks/useFadeIn';
 import DidicastLogo from "../../images/logo-didicast-gray.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
-        minWidth: theme.typography.pxToRem(1200),
+        // minWidth: theme.typography.pxToRem(1200),
         maxHeight: theme.typography.pxToRem(72),
         border: `${theme.typography.pxToRem(1)} solid #e9e9e9`,
         backgroundColor: "#ffffff",
@@ -50,8 +51,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Header = () => {
     const classes = useStyles();
+    const animation = useFadeIn("down", 1, 0.2);
     return (
-        <AppBar className={classes.header}>
+        <AppBar className={classes.header} {...animation}>
             <div>
                 <img src={DidicastLogo} alt="디디캐스트 로고" />
                 <a href="/">서비스 소개</a>

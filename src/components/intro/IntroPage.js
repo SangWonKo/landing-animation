@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         height: "100%",
         overflow: "scroll",
-        marginTop: theme.typography.pxToRem(72),
+        // paddingTop: theme.typography.pxToRem(72),
         // paddingLeft: theme.typography.pxToRem(40),
         // paddingRight: theme.typography.pxToRem(40),
     },
@@ -20,13 +20,13 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#f9f9f9"
     }
 }));
-const IntroPage = () => {
+const IntroPage = ({...intersectingProps}) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-             <div className={classes.dummy} />
-             <div className={classes.dummy} />
-            <FadeInSection />
+             {/* <div className={classes.dummy} />
+             <div className={classes.dummy} /> */}
+            <FadeInSection {...intersectingProps}/>
             <div className={classes.dummy}>
                 <h1>dummy section</h1>
             </div>

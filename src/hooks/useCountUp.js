@@ -26,7 +26,7 @@ const useCountUp = (end, start = 0, duration = 3000) => {
         const { current } = domRef;
 
         if (current) {
-            observer.current = new IntersectionObserver(handleScroll, { threshold: 0.5 });
+            observer.current = new IntersectionObserver(handleScroll, { threshold: 0.7 });
             observer.current.observe(current);
 
             return () => observer && observer.current.disconnect();
