@@ -5,12 +5,7 @@ const useIntersection = (ref) => {
     const [isIntersected, setIsIntersected] = useState(false);
 
     const handleScroll = useCallback(([entry]) => {
-        console.log(entry.isIntersecting);
-        if (entry.isIntersecting) {
-            setIsIntersected(true);
-        } else {
-            setIsIntersected(false);
-        }
+        setIsIntersected(entry.isIntersecting);
     }, []);
     
     useEffect(() => {

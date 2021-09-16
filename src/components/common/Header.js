@@ -1,6 +1,5 @@
 import { AppBar, Button, makeStyles } from '@material-ui/core';
-import React from 'react';
-import useFadeIn from '../../hooks/useFadeIn';
+import React, { useEffect } from 'react';
 import DidicastLogo from "../../images/logo-didicast-gray.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
         top: 0,
         left: 0,
         zIndex: 999,
+        opacity: 0,
+        transition: "0.2s all",
+
+        "& > .fadein": {
+            opacity: 1
+        },
 
         "& div": {
             display: "flex",
@@ -49,11 +54,14 @@ const useStyles = makeStyles((theme) => ({
     }
 
 }));
-const Header = () => {
+const Header = ({headerShown}) => {
     const classes = useStyles();
-    const animation = useFadeIn("down", 1, 0.2);
+    // const animation = useFadeIn("down", 0.3, 0);
+    useEffect(() => {
+        console.log(headerShown);
+    },[headerShown]);
     return (
-        <AppBar className={classes.header} {...animation}>
+        <AppBar className={`${classes.header} ${headerShown ? "fadein" : ""}`} >
             <div>
                 <img src={DidicastLogo} alt="디디캐스트 로고" />
                 <a href="/">서비스 소개</a>

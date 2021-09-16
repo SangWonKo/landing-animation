@@ -1,5 +1,8 @@
 import { makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import useFadeIn from '../../hooks/useFadeIn';
+import useIntersection from '../../hooks/useIntersection';
+import Header from '../common/Header';
 import CountUpSection from './sections/CountUpSection';
 import FadeInSection from './sections/FadeInSection';
 
@@ -20,13 +23,15 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#f9f9f9"
     }
 }));
-const IntroPage = ({...intersectingProps}) => {
+const IntroPage = () => {
     const classes = useStyles();
+    const [headerShown, setHeaderShown] = useState(false);
     return (
         <div className={classes.container}>
-             {/* <div className={classes.dummy} />
+            <Header headerShown={headerShown}/>
+            {/* <div className={classes.dummy} />
              <div className={classes.dummy} /> */}
-            <FadeInSection {...intersectingProps}/>
+            <FadeInSection setHeaderShown={setHeaderShown}/>
             <div className={classes.dummy}>
                 <h1>dummy section</h1>
             </div>

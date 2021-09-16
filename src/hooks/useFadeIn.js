@@ -20,6 +20,7 @@ const useFadeIn = (direction = 'up', duration = 1, delay = 0) => {
 
     const handleScroll = useCallback(([entry]) => {
         const { current } = domRef;
+       
         if (entry.isIntersecting) {
             current.style.transitionProperty = 'all';
             current.style.transitionDuration = `${duration}s`;
