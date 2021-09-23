@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
     "& h1": {
       marginBottom: theme.typography.pxToRem(32),
+      color:  "var(--text)",
     }
 
   },
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
       margin: 0,
     },
     "& span": {
-      color: "#0b3351",
+      color: "var(--navy-text)",
       fontWeight: "bold",  
     },
   },
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontSize: theme.typography.pxToRem(24),
-    color: "#333",
+    color:  "var(--text)",
     textAlign: "left",
     marginLeft: theme.typography.pxToRem(18)
   }

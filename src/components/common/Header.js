@@ -1,6 +1,7 @@
 import { AppBar, Button, makeStyles } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import DidicastLogo from "../../images/logo-didicast-gray.svg";
+import DarkMode from '../DarkMode';
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -11,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         // minWidth: theme.typography.pxToRem(1200),
         maxHeight: theme.typography.pxToRem(72),
-        border: `${theme.typography.pxToRem(1)} solid #e9e9e9`,
-        backgroundColor: "#ffffff",
+        border: `${theme.typography.pxToRem(1)} solid var(--bg)`,
+        backgroundColor: "var(--bg)",
         color: "#595959",
         fontSize: theme.typography.pxToRem(16),
         boxShadow: `0 ${theme.typography.pxToRem(2)} ${theme.typography.pxToRem(4)} ${theme.typography.pxToRem(2)} rgb(0, 0, 0, 0.05)`,
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
         top: 0,
         left: 0,
         zIndex: 999,
-        opacity: 0,
+        opacity: 1,
         transition: "0.2s all",
 
         "& > .fadein": {
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
         "& a": {
             fontSize: theme.typography.pxToRem(16),
             lineHeight: theme.typography.pxToRem(24),
-            color: "#595959",
+            color: "var(--header-text)",
             textDecoration: "none",
             marginRight: theme.typography.pxToRem(20),
         }
@@ -69,6 +70,7 @@ const Header = ({headerShown}) => {
                 <a href="https://enterprise.didicast.com/faq" target="_blank" rel="noreferrer">FAQ</a>
             </div>
             <div>
+                <DarkMode />
                 <Button className={classes.button} style={{ backgroundColor: "#3f5c74", marginRight: "16px" }}>제안서 다운로드</Button>
                 <Button className={classes.button} style={{ backgroundColor: "#06b0d7" }}>로그인</Button>
             </div>

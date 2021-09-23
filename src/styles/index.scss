@@ -1,0 +1,47 @@
+// @import "./custom-bootstrap";
+// @import "~@coreui/coreui/scss/coreui";
+
+$remInPx: 16;
+
+@function px2rem($pixel) {
+  @return $pixel / $remInPx * 1rem;
+}
+
+// @include media-breakpoint-down(xs) {
+//   html {
+//     font-size: $remInPx / 360 * 100vw; //4.26vw;
+
+//     &.smaller {
+//       font-size: ($remInPx - 2) / 360 * 100vw;
+//     }
+//     &.bigger {
+//       font-size: ($remInPx + 2) / 360 * 100vw;
+//     }
+//   }
+// }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+  &.light {
+    --bg: #ffffff;
+    --dummy-bg: #f9f9f9;
+    --fadein-bg: #d7f0f7;
+    --text: #333333;
+    --header-text: #595959;
+    --navy-text: #0b3351;
+  }
+  &.dark {
+    --bg: #121212;
+    --fadein-bg: #121212;
+    --dummy-bg: #000000;
+    --text: #eee;
+    --header-text: #fff;
+    --navy-text: #8b8b8b;
+  }
+}

@@ -2,6 +2,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { Container, makeStyles } from '@material-ui/core';
 import Intro from './intro/IntroPage';
 import Footer from './common/Footer';
+import { ThemeProvider } from '../context/themeProvider';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -19,7 +20,7 @@ const RawContainer = () => {
     const classes = useStyles();
     
     return (
-        <div>
+        <ThemeProvider>
             <Switch>
                 <Route path={"/"} exact>
                     <Redirect push={false} to="/intro" />
@@ -36,7 +37,7 @@ const RawContainer = () => {
 
             </Switch>
 
-        </div>
+        </ThemeProvider>
     );
 };
 
